@@ -1,8 +1,8 @@
-﻿//make a simple loop that reads something and writes a mathematical operation
-int readThis = 0;
+﻿using ProjectCommon;
 
-for (int i = 1; i <= 10; i++)
+Pessoa pessoa1 = new Pessoa
 {
-    readThis = int.TryParse(Console.ReadLine(), out readThis) ? readThis : 0;
-    Console.WriteLine(readThis * readThis);
-}
+    Nome = "João",
+    Idade = 30
+};
+pessoa1.Apresentar();
