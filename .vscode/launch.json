@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "type": "coreclr",
+      "request": "launch",
+      "name": "Launch .NET Console App",
+      "program": "${workspaceFolder}/Project/bin/Debug/net9.0/Project.exe",
+      "preLaunchTask": "build",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    }
+  ]
+}
