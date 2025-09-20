@@ -6,16 +6,23 @@ public class Pessoa
     { 
         
     }
-    public Pessoa(string nome)
-    {
-        Nome = nome;
-    }
     public Pessoa(string nome, string sobrenome, int idade)
     {
         Nome = nome;
         Sobrenome = sobrenome;
         Idade = idade;
     }
+    public void Deconstruct(out string nome, out string sobrenome, out int idade)
+    {
+        nome = Nome;
+        sobrenome = Sobrenome ?? string.Empty;
+        idade = Idade;
+    }
+    public Pessoa(string nome)
+    {
+        Nome = nome;
+    }
+
     private string _nome = string.Empty;
     private int _idade = 0;
 

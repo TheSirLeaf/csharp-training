@@ -1,27 +1,83 @@
 ﻿using ProjectCommon;
 using System;
-// Curso com várias pessoas
-var curso = new Curso("Programação em C#", "Aprenda C# do básico ao avançado");
+using Newtonsoft.Json;
 
-curso.AdicionarAluno(new Pessoa("Ana", "Silva", 25));
-curso.AdicionarAluno(new Pessoa("Bruno", "Souza", 30));
-curso.AdicionarAluno(new Pessoa("Carla", "Pereira", 22));
-curso.AdicionarAluno(new Pessoa("Daniel", "Costa", 28));
-curso.AdicionarAluno(new Pessoa("Eduardo", "Lima", 27));
-curso.AdicionarAluno(new Pessoa("Fernanda", "Alves", 24));
-curso.AdicionarAluno(new Pessoa("Gabriel", "Martins", 29));
-curso.AdicionarAluno(new Pessoa("Helena", "Rocha", 23));
-curso.AdicionarAluno(new Pessoa("Igor", "Fernandes", 26));
-curso.AdicionarAluno(new Pessoa("Juliana", "Ribeiro", 31));
-curso.AdicionarAluno(new Pessoa("Kleber", "Duarte", 32));
-curso.AdicionarAluno(new Pessoa("Larissa", "Melo", 21));
-curso.AdicionarAluno(new Pessoa("Marcos", "Teixeira", 28));
-curso.AdicionarAluno(new Pessoa("Natália", "Barros", 25));
-curso.AdicionarAluno(new Pessoa("Otávio", "Cardoso", 27));
-curso.AdicionarAluno(new Pessoa("Paula", "Freitas", 22));
-curso.AdicionarAluno(new Pessoa("Rafael", "Moreira", 30));
-curso.AdicionarAluno(new Pessoa("Sabrina", "Castro", 24));
-curso.AdicionarAluno(new Pessoa("Thiago", "Pires", 29));
-curso.AdicionarAluno(new Pessoa("Vanessa", "Oliveira", 23));
+string conteudoArquivo = File.ReadAllText("./Files/venda.json");
+try
+{
+    List<Venda2>? vendas = JsonConvert.DeserializeObject<List<Venda2>>(conteudoArquivo);
 
-curso.ListarAlunos();
+    if (vendas != null)
+    {
+        foreach (Venda2 venda in vendas)
+        {
+            Console.WriteLine($"Id: {venda.Id}");
+            Console.WriteLine($"Produto: {venda.Produto}");
+            Console.WriteLine($"Preço: {venda.Preco}");
+            Console.WriteLine($"Data da Venda: {venda.DataVenda}");
+            Console.WriteLine("---------------");
+        }
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Erro ao ler o arquivo: {ex.Message}");
+}
+
+
+
+
+
+
+// DateTime dataAtual = DateTime.Now;
+
+// List<Venda> vendas = new List<Venda>();
+
+// Venda v1 = new Venda(id: 1, produto: "Caneta", preco: 1.50m, dataVenda: dataAtual);
+// Venda v2 = new Venda(id: 2, produto: "Lápis", preco: 0.80m, dataVenda: dataAtual);
+
+// vendas.Add(v1);
+// vendas.Add(v2);
+
+// string serializado = JsonConvert.SerializeObject(vendas, Formatting.Indented);
+
+// Console.WriteLine(serializado);
+
+// File.WriteAllText("./Files/venda.json", serializado);
+
+
+
+
+
+
+
+
+
+
+
+
+// LerArquivo lerArquivo = new LerArquivo();
+
+// Console.WriteLine("Iniciando leitura do arquivo");
+// Console.WriteLine("Escreva o caminho do arquivo");
+// string caminho;
+// while (string.IsNullOrWhiteSpace(caminho = Console.ReadLine()))
+//     Console.WriteLine("Caminho inválido. Tente novamente:");
+
+// var (sucesso, linhas, quantidadeLinhas) = lerArquivo.LerArquivos(caminho);
+// if (sucesso)
+// {
+//     Console.WriteLine($"Quantidade de linhas do arquivo: {quantidadeLinhas}");
+//     foreach (var linha in linhas)
+//     {
+//         Console.WriteLine(linha);
+//     }
+// }
+// else
+// {
+//     Console.WriteLine("Não foi possível ler o arquivo");
+//     foreach (var linha in linhas)
+//     {
+//         Console.WriteLine(linha);
+//     }
+// }
